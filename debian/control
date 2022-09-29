@@ -1,0 +1,32 @@
+Source: golang-github-hashicorp-go-syslog
+Section: golang
+Priority: optional
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Tianon Gravi <tianon@debian.org>,
+           Tim Potter <tpot@hpe.com>,
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+Standards-Version: 4.5.1
+Homepage: https://github.com/hashicorp/go-syslog
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-hashicorp-go-syslog
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-hashicorp-go-syslog.git
+Rules-Requires-Root: no
+Testsuite: autopkgtest-pkg-go
+XS-Go-Import-Path: github.com/hashicorp/go-syslog
+
+Package: golang-github-hashicorp-go-syslog-dev
+Architecture: all
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Multi-Arch: foreign
+Description: Golang syslog wrapper, cross-compile friendly
+ This package provides a very simple gsyslog package. The point of this package
+ is to allow safe importing of syslog without introducing cross-compilation
+ issues. The stdlib log/syslog cannot be imported on Windows systems, and
+ without conditional compilation this adds complications.
+ .
+ Instead, gsyslog provides a very simple wrapper around log/syslog but returns a
+ runtime error if attempting to initialize on a non Linux or OSX system.
+ .
+ This package contains the source.
